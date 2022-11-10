@@ -1,4 +1,5 @@
 import { useState } from "react";
+import calculate from "../../logic/calculator";
 import ButtonPanel from "../ButtonPanel/ButtonPanel";
 import DisplayController from "../DisplayController/DisplayController";
 
@@ -9,9 +10,17 @@ const Calculator = () => {
         next: null,
         operation: null,
     });
+ 
 
+    const actionHandler = (action) => {
+    //    const newState =  calculate(action, state);
+    //    setState(newState);
+    // OR
+    //    setState(calculate(action,state));
 
-    const actionHandler = (action) => {};
+       console.log(`se ha pulsado el boton ${action.button.content} en el panel ${action.panel}`)
+      
+    };
  
     // const [total, setTotal] = useState(null);
     // const [next, setNext] = useState(null);
@@ -19,9 +28,9 @@ const Calculator = () => {
 
     return (<div>
         <DisplayController></DisplayController>
-        <ButtonPanel buttons={[1,2,3,4,5,6,7,8,9,0]} numbers action={actionHandler}></ButtonPanel>
-        <ButtonPanel buttons={['+','-','/','*','=']} operations action={actionHandler}></ButtonPanel>
-        <ButtonPanel buttons={['C','CE']} specials action={actionHandler}></ButtonPanel>
+        <ButtonPanel name="num" buttons={[1,2,3,4,5,6,7,8,9,0]} numbers action={actionHandler}></ButtonPanel>
+        <ButtonPanel name="ops" buttons={['+','-','/','*','=']} operations action={actionHandler}></ButtonPanel>
+        <ButtonPanel name="spc" buttons={['C','AC']} specials action={actionHandler}></ButtonPanel>
     </div> )
 } 
 

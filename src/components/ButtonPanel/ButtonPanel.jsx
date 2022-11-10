@@ -2,6 +2,7 @@ import Button from "../Button/Button";
 
 
 const ButtonPanel = ({
+    name,
     buttons = [1,2,3,4,5,6,7,8,9,0],
     action = ({button}) => {},
     operations = false,
@@ -9,9 +10,9 @@ const ButtonPanel = ({
     specials = false
 }) => {
 
-    // const handler = (button) => {
-    //     action(button)
-    // }
+    const handler = (button) => {
+        action({button, panel: name})
+    }
 
     const getType = () => {
         if(numbers) return 'number';
@@ -24,7 +25,7 @@ const ButtonPanel = ({
         { buttons.map((button, index) =>  
             <Button key={index}
                     content={button} 
-                    clickHandler={action} 
+                    clickHandler={handler} 
                     type={getType()}
                 />) }
     </div>);
