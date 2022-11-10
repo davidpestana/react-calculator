@@ -3,14 +3,15 @@ import Button from "../Button/Button";
 
 const ButtonPanel = ({
     buttons = [1,2,3,4,5,6,7,8,9,0],
+    action = ({button}) => {},
     operations = false,
     numbers = false,
     specials = false
 }) => {
 
-    const handler = (dataDelButton) => {
-        console.log(dataDelButton);
-    }
+    // const handler = (button) => {
+    //     action(button)
+    // }
 
     const getType = () => {
         if(numbers) return 'number';
@@ -20,9 +21,10 @@ const ButtonPanel = ({
 
     return (
     <div>
-        { buttons.map(button =>  
-            <Button content={button} 
-                    clickHandler={handler} 
+        { buttons.map((button, index) =>  
+            <Button key={index}
+                    content={button} 
+                    clickHandler={action} 
                     type={getType()}
                 />) }
     </div>);
