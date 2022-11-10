@@ -4,11 +4,11 @@ const Button = ({
     content, 
     type = 'number', 
     shape = 'square',
-    onClick = (content) => { console.log('se ha pulsado ' + content)}
+    clickHandler = ({content, type, shape}) => { },
 }) => {
     return (<div 
         className={`${type} ${shape}`} 
-        onClick={() => onClick({content})}>{content}
+        onClick={() => clickHandler({content, type, shape})}>{content}
     </div>)
 }
 
